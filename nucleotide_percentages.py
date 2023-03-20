@@ -36,7 +36,7 @@ if total_count == 0:
     print("Error: the input sequence contains no valid nucleotides.")
     sys.exit(1)
 
-proportions = {nt: count / total_count * 100 for nt, count in nucleotide_counts.items() if count > 0}
+proportions = {nt: nucleotide_counts.get(nt, 0) / total_count * 100 for nt in nucleotide_counts.keys()}
 
 print(f"The proportion of nucleotides in the sequence is as follows for A, C, G, T and U:\n"
       f"A: {proportions['A']:.2f}%\n"
