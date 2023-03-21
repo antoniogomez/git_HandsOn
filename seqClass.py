@@ -22,7 +22,10 @@ args = parser.parse_args()
 args.seq = args.seq.upper()  # Note we just added this line
 if re.search('^[ACGTU]+$', args.seq):
     if re.search('T', args.seq):
-        print ('The sequence is DNA')
+        if not re.search('U', args.seq):
+            print ('The sequence is DNA')
+        else:
+            print ('Please check the sequence, it contains both T and U')
     elif re.search('U', args.seq):
         print ('The sequence is RNA')
     else:
